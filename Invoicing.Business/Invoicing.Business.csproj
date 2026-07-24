@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Invoicing.Contract\Invoicing.Contract.csproj" />
+    <ProjectReference Include="..\Invoicing.Domain\Invoicing.Domain.csproj" />
+    <ProjectReference Include="..\Invoicing.Infrastructure\Invoicing.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

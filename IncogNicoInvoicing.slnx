@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="IncogNicoInvoicing/IncogNicoInvoicing.csproj" />
+  <Project Path="Invoicing.Business/Invoicing.Business.csproj" />
+  <Project Path="Invoicing.Contract/Invoicing.Contract.csproj" />
+  <Project Path="Invoicing.Domain/Invoicing.Domain.csproj" />
+  <Project Path="Invoicing.Infrastructure/Invoicing.Infrastructure.csproj" />
+</Solution>
