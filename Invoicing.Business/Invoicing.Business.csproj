@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Invoicing.Contract\Invoicing.Contract.csproj" />
     <ProjectReference Include="..\Invoicing.Domain\Invoicing.Domain.csproj" />
-    <ProjectReference Include="..\Invoicing.Infrastructure\Invoicing.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

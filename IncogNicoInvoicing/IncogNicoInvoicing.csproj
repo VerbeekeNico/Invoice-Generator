@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Invoicing.Business\Invoicing.Business.csproj" />
+    <ProjectReference Include="..\Invoicing.Infrastructure\Invoicing.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

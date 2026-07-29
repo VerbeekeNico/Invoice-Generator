@@ -1,4 +1,5 @@
 ﻿using Invoicing.Business;
+using Invoicing.Contract;
 using Invoicing.Contract.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,28 +9,28 @@ namespace IncogNicoInvoicing.Controllers
     [Route("[controller]")]
     public class InvoicingApiController : ControllerBase
     {
-        private DemoDataProvider demoDataProvider;
-        public InvoicingApiController()
+        private IDemoDataProvider _demoDataProvider;
+        public InvoicingApiController(IDemoDataProvider demoDataProvider)
         {
-            demoDataProvider = new DemoDataProvider();
+            _demoDataProvider = demoDataProvider;
         }
 
         [HttpGet((nameof(GetCustomers)))]
         public IEnumerable<CustomerDto> GetCustomers()
         {
-            return demoDataProvider.GetCustomers();
+            return _demoDataProvider.GetCustomers();
         }
 
         [HttpGet((nameof(GetMyBusiness)))]
         public BusinessDto GetMyBusiness()
         {
-            return demoDataProvider.GetBusiness();
+            return _demoDataProvider.GetBusiness();
         }
 
         [HttpGet((nameof(GetWorkItems)))]
         public IEnumerable<WorkItemDto> GetWorkItems()
         {
-            return demoDataProvider.GetWorkItems();
+            return _demoDataProvider.GetWorkItems();
         }
     }
 }

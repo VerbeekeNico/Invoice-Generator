@@ -1,7 +1,15 @@
+using Invoicing.Business;
+using Invoicing.Business.Interfaces;
+using Invoicing.Contract;
+using Invoicing.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddScoped<IDemoDataProvider, DemoDataProvider>();
+builder.Services.AddScoped<DemoDataDtoMapper>();
+builder.Services.AddScoped<IDemoRepository, DemoRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
