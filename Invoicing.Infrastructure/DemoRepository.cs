@@ -1,4 +1,4 @@
-﻿
+﻿using Invoicing.Business.Interfaces;
 using Invoicing.Domain.Entities;
 using Invoicing.Domain.Enums;
 using Invoicing.Domain.ValueObjects;
@@ -6,9 +6,9 @@ using Invoicing.Domain.ValueObjects;
 namespace Invoicing.Infrastructure
 {
     // one repository to provide all demodata at the moment
-    public class DemoRepository
+    public class DemoRepository : IDemoRepository
     {
-        private Business MyBusiness;
+        private Domain.Entities.Business MyBusiness;
         private Customer FirstCustomer;
         private Customer SecondCustomer;
         private List<WorkItem> WorkItems = new List<WorkItem>();
@@ -17,7 +17,7 @@ namespace Invoicing.Infrastructure
 
         public DemoRepository()
         {
-            MyBusiness = new Business()
+            MyBusiness = new Domain.Entities.Business()
             {
                 ContactInfo = new ContactInfo()
                 {
@@ -136,7 +136,7 @@ namespace Invoicing.Infrastructure
             });
         }
 
-        public Business GetMyBusiness()
+        public Domain.Entities.Business GetMyBusiness()
         {
             return MyBusiness;
         }

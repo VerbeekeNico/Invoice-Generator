@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Invoicing.Business\Invoicing.Business.csproj" />
     <ProjectReference Include="..\Invoicing.Domain\Invoicing.Domain.csproj" />
   </ItemGroup>
 
