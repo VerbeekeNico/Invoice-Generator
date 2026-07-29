@@ -1,10 +1,10 @@
-﻿using Invoicing.Contract.Dtos;
-using Invoicing.Domain.Entities;
+﻿using Invoicing.Contract;
+using Invoicing.Contract.Dtos;
 using Invoicing.Infrastructure;
 
 namespace Invoicing.Business
 {
-    public class DemoDataProvider
+    public class DemoDataProvider : IDemoDataProvider
     {
         private DemoRepository _demoRepo = new DemoRepository();
         private DemoDataDtoMapper _demoMapper = new DemoDataDtoMapper();
