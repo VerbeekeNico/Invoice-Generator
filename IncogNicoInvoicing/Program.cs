@@ -2,6 +2,7 @@ using Invoicing.Business;
 using Invoicing.Business.Interfaces;
 using Invoicing.Contract;
 using Invoicing.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,10 @@ builder.Services.AddScoped<IDemoRepository, DemoRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<InvoicingDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("Invoicing")));
 
 var app = builder.Build();
 
