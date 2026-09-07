@@ -1,0 +1,5 @@
+<p>Items: {{ workItems().length }}</p> 
+
+@for (workItem of workItems(); track workItem.id) {
+  <pre>{{ workItem | json }}</pre>
+} 

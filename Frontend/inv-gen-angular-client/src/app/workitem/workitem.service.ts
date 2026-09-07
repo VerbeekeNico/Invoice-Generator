@@ -7,7 +7,7 @@ import { WorkItem } from './workitem.model';
 @Injectable({ providedIn: 'root' })
 export class WorkItemService {
   private readonly http = inject(HttpClient);
-  private readonly workItemsUrl = `${environment.apiUrl}/api/WorkItems`;
+  private readonly workItemsUrl = `${environment.apiUrl}/WorkItems`;
 
   getWorkItems(): Observable<WorkItem[]> {
     return this.http.get<WorkItem[]>(this.workItemsUrl);
