@@ -1,10 +1,9 @@
-﻿using Invoicing.Domain.Enums;
+using Invoicing.Domain.Enums;
 
 namespace Invoicing.Contract.Dtos
 {
-    public class WorkItemDto
+    public class CreateWorkItemDto
     {
-        public int Id { get; set; }
         public required DateTime StartTime { get; set; }
         public required DateTime EndTime { get; set; }
         public required AddressDto Location { get; set; }

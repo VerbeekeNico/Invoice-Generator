@@ -1,22 +1,26 @@
 ﻿using Invoicing.Business.Interfaces;
+using Invoicing.Contract;
 using Invoicing.Domain.Entities;
 using Invoicing.Domain.Enums;
 using Invoicing.Domain.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace Invoicing.Infrastructure
 {
     // one repository to provide all demodata at the moment
-    public class DemoRepository : IDemoRepository
+    public class DemoRepository : IDemoRepository, IWorkItemRepository
     {
         private Domain.Entities.Business MyBusiness;
         private Customer FirstCustomer;
         private Customer SecondCustomer;
         private List<WorkItem> WorkItems = new List<WorkItem>();
+        private readonly InvoicingDbContext _dbContext;
 
         public List<Invoice> Invoices = new List<Invoice>();
 
-        public DemoRepository()
+        public DemoRepository(InvoicingDbContext dbContext)
         {
+            _dbContext = dbContext;
             MyBusiness = new Domain.Entities.Business()
             {
                 ContactInfo = new ContactInfo()
@@ -149,6 +153,50 @@ namespace Invoicing.Infrastructure
         public IEnumerable<WorkItem> GetWorkItems()
         {
             return WorkItems;
+        }
+
+        // IWorkItemRepository implementation
+        public async Task<WorkItem?> GetByIdAsync(int id)
+        {
+            return await _dbContext.WorkItems.FirstOrDefaultAsync(w => w.Id == id);
+        }
+
+        public async Task<IEnumerable<WorkItem>> GetAllAsync()
+        {
+            return await _dbContext.WorkItems.ToListAsync();
+        }
+
+        public async Task<WorkItem> CreateAsync(WorkItem workItem)
+        {
+            _dbContext.WorkItems.Add(workItem);
+            await _dbContext.SaveChangesAsync();
+            return workItem;
+        }
+
+        public async Task<WorkItem> UpdateAsync(WorkItem workItem)
+        {
+            _dbContext.WorkItems.Update(workItem);
+            await _dbContext.SaveChangesAsync();
+            return workItem;
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var workItem = await GetByIdAsync(id);
+            if (workItem == null)
+            {
+                return false;
+            }
+
+            // Only allow deletion if not assigned to an invoice line
+            if (workItem.InvoiceLineId.HasValue)
+            {
+                throw new InvalidOperationException("Cannot delete a work item that is assigned to an invoice line.");
+            }
+
+            _dbContext.WorkItems.Remove(workItem);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }

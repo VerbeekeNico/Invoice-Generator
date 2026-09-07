@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IDemoDataProvider, DemoDataProvider>();
 builder.Services.AddScoped<DemoDataDtoMapper>();
 builder.Services.AddScoped<IDemoRepository, DemoRepository>();
+builder.Services.AddScoped<IWorkItemService, WorkItemService>();
+builder.Services.AddScoped<IWorkItemRepository, DemoRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

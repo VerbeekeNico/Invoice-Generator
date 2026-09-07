@@ -17,6 +17,17 @@ namespace Invoicing.Business
             };
         }
 
+        public Address MapAddressDtoToAddress(AddressDto a)
+        {
+            return new Address()
+            {
+                Street = a.Street,
+                City = a.City,
+                PostalCode = a.PostalCode,
+                HouseNumberIndicator = a.HouseNumberIndicator
+            };
+        }
+
         public ContactInfoDto MapContactInfoToDto(ContactInfo c)
         {
             return new ContactInfoDto()
@@ -51,6 +62,7 @@ namespace Invoicing.Business
         {
             return new WorkItemDto()
             {
+                Id = w.Id,
                 StartTime = w.StartTime,
                 EndTime = w.EndTime,
                 Location = MapAddressToDto(w.Location),
@@ -59,6 +71,31 @@ namespace Invoicing.Business
                 Note = w.Note,
                 VatCode = w.VatCode
             };
+        }
+
+        public WorkItem MapCreateWorkItemDtoToWorkItem(CreateWorkItemDto dto)
+        {
+            return new WorkItem()
+            {
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime,
+                Location = MapAddressDtoToAddress(dto.Location),
+                Rate = dto.Rate,
+                Description = dto.Description,
+                Note = dto.Note,
+                VatCode = dto.VatCode
+            };
+        }
+
+        public void MapUpdateWorkItemDtoToWorkItem(UpdateWorkItemDto dto, WorkItem workItem)
+        {
+            workItem.StartTime = dto.StartTime;
+            workItem.EndTime = dto.EndTime;
+            workItem.Location = MapAddressDtoToAddress(dto.Location);
+            workItem.Rate = dto.Rate;
+            workItem.Description = dto.Description;
+            workItem.Note = dto.Note;
+            workItem.VatCode = dto.VatCode;
         }
     }
 }
