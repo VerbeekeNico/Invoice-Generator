@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="IncogNicoInvoicing/IncogNicoInvoicing.csproj" />
-  <Project Path="Invoicing.Business/Invoicing.Business.csproj" />
-  <Project Path="Invoicing.Contract/Invoicing.Contract.csproj" />
-  <Project Path="Invoicing.Domain/Invoicing.Domain.csproj" />
-  <Project Path="Invoicing.Infrastructure/Invoicing.Infrastructure.csproj" />
+  <Project Path="Backend/IncogNicoInvoicing/IncogNicoInvoicing.csproj" />
+  <Project Path="Backend/Invoicing.Business/Invoicing.Business.csproj" />
+  <Project Path="Backend/Invoicing.Contract/Invoicing.Contract.csproj" />
+  <Project Path="Backend/Invoicing.Domain/Invoicing.Domain.csproj" />
+  <Project Path="Backend/Invoicing.Infrastructure/Invoicing.Infrastructure.csproj" />
 </Solution>
