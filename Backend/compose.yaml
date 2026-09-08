@@ -1,0 +1,7 @@
+services:
+  api:
+    image: incognico-invoicing
+    ports:
+      - "8080:8080"
+    environment:
+      ConnectionStrings__Invoicing: "Server=host.docker.internal,64141;Database=Invoicing;User Id=invoicing_user;Password=${DB_PASSWORD};TrustServerCertificate=True"
