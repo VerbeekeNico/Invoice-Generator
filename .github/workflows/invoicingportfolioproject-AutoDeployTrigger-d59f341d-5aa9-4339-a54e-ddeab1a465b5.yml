@@ -36,6 +36,6 @@ jobs:
         with:
           containerAppName: invoicingportfolioproject
           resourceGroup: InvoicingPortfolioProject
-          imageToDeploy: ghcr.io/verbeeknico/incognico-invoicing:latest
+          imageToDeploy: ghcr.io/verbeekenico/incognico-invoicing:latest
 
 
