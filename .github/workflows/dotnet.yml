@@ -55,6 +55,7 @@ jobs:
           tags: ghcr.io/verbeekenico/incognico-invoicing:latest
           
   build-and-deploy:
+      needs: docker
       runs-on: ubuntu-latest
       permissions: 
         id-token: write #This is required for requesting the OIDC JWT Token
