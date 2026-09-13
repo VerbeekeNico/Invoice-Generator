@@ -80,8 +80,9 @@ jobs:
           ConnectionStrings__Invoicing: ${{ secrets.INVOICING_CONNECTION_STRING }}
         run: |
           dotnet ef database update \
-            --project backend/Invoicing.Infrastructure/Invoicing.Infrastructure.csproj \
-            --startup-project backend/IncogNicoInvoicing/IncogNicoInvoicing.csproj
+            -c InvoicingDbContext \
+            -p backend/Invoicing.Infrastructure/Invoicing.Infrastructure.csproj \
+            -s backend/IncogNicoInvoicing/IncogNicoInvoicing.csproj
         
   build-and-deploy:
       needs: [docker, execute-ef-migrations]
