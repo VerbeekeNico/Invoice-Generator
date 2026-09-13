@@ -3,12 +3,12 @@ name: Trigger auto deployment for invoicingportfolioproject
 # When this action will be executed
 on:
   # Automatically trigger it when detected changes in repo
-  push:
-    branches: 
-      [ master ]
-    paths:
-    - '**'
-    - '.github/workflows/invoicingportfolioproject-AutoDeployTrigger-d59f341d-5aa9-4339-a54e-ddeab1a465b5.yml'
+  # push:
+  #   branches: 
+  #     [ master ]
+  #   paths:
+  #   - '**'
+  #   - '.github/workflows/invoicingportfolioproject-AutoDeployTrigger-d59f341d-5aa9-4339-a54e-ddeab1a465b5.yml'
 
   # Allow manual trigger 
   workflow_dispatch:      
