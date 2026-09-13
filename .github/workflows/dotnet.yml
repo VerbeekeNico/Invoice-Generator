@@ -58,8 +58,37 @@ jobs:
           push: true
           tags: ghcr.io/verbeekenico/incognico-invoicing:latest
           
+  execute-ef-migrations:
+    needs: docker
+    if: inputs.execute_migrations
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run database migrations
+        env:
+          ConnectionStrings__Invoicing: ${{ secrets.INVOICING_CONNECTION_STRING }}
+        run: |
+          dotnet ef database update \
+            --project backend/Invoicing.Infrastructure \
+            --startup-project backend/IncogNicoInvoicing
+        
   build-and-deploy:
-      needs: docker
+      needs: [docker, execute-ef-migrations]
+      if: |
+        always() &&
+        needs.docker.result == 'success' &&
+        (needs.execute-ef-migrations.result == 'success' || needs.execute-ef-migrations.result == 'skipped')
       runs-on: ubuntu-latest
       permissions: 
         id-token: write #This is required for requesting the OIDC JWT Token
