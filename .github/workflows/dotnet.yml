@@ -19,9 +19,7 @@ permissions:
   
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -36,8 +34,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
   docker:
-    needs: build    
-    if: github.event_name == 'push'
+    needs: build
     runs-on: ubuntu-latest
   
     steps:
