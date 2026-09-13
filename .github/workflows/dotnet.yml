@@ -86,8 +86,8 @@ jobs:
         run: |
           dotnet ef database update \
             -c InvoicingDbContext \
-            -p backend/Invoicing.Infrastructure/Invoicing.Infrastructure.csproj \
-            -s backend/IncogNicoInvoicing/IncogNicoInvoicing.csproj
+            -p ./Backend/Invoicing.Infrastructure/Invoicing.Infrastructure.csproj \
+            -s ./Backend/IncogNicoInvoicing/IncogNicoInvoicing.csproj
         
   build-and-deploy:
       needs: [docker, execute-ef-migrations]
