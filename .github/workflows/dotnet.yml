@@ -26,11 +26,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
-    - name: Diagnose EF projects
+    - name: Get runner public IP
+      id: runner-ip
       run: |
-        find . -name "*.csproj"
-        dotnet --info
+        echo "ip=$(curl -s https://api.ipify.org)" >> "$GITHUB_OUTPUT"
+
+    - name: Show runner IP
+      run: |
+        echo "Runner IP: ${{ steps.runner-ip.outputs.ip }}"
+
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
