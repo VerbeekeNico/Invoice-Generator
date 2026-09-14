@@ -86,10 +86,10 @@ jobs:
 
       - name: Run database migrations
         env:
-          Database__Server: ${Database__Server}
-          Database__DatabaseName: ${Database__DatabaseName}
-          Database__UserId: ${Database__UserId}
-          DB_PASSWORD: ${DB_PASSWORD}
+          Database__Server: ${{secrets.Database__Server}}
+          Database__DatabaseName: ${{secrets.Database__DatabaseName}}
+          Database__UserId: ${{secrets.Database__UserId}}
+          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
         
         run: |
           dotnet ef database update \
