@@ -86,7 +86,11 @@ jobs:
 
       - name: Run database migrations
         env:
-          ConnectionStrings__Invoicing: ${{ secrets.INVOICING_CONNECTION_STRING }}
+          Database__Server: ${Database__Server}
+          Database__DatabaseName: ${Database__DatabaseName}
+          Database__UserId: ${Database__UserId}
+          DB_PASSWORD: ${DB_PASSWORD}
+        
         run: |
           dotnet ef database update \
             -c InvoicingDbContext \
