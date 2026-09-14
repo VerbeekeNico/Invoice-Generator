@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # docker env
 .env
+
+# local env settings
+appsettings.Development.json

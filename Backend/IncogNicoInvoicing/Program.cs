@@ -20,15 +20,26 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:8080")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+
+var server = builder.Configuration["Database:Server"];
+var database = builder.Configuration["Database:DatabaseName"];
+var userId = builder.Configuration["Database:UserId"];
+var password = builder.Configuration["DB_PASSWORD"];
+
+var connectionString =
+    $"Server={server};Database={database};User Id={userId};Password={password};TrustServerCertificate=True;";
+
 builder.Services.AddDbContext<InvoicingDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("Invoicing")));
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
