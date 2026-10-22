@@ -55,7 +55,7 @@ jobs:
           IMAGE: ghcr.io/verbeekenico/inv-gen-angular-client:${{ github.sha }}
         run: |
           az containerapp update \
-            --name frontend-azure \
+            --name inv-angular-frontend \
             --resource-group InvoicingPortfolioProject \
             --image "$IMAGE" \
             --set-env-vars API_URL="$API_URL"
