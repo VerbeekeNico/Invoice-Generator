@@ -20,6 +20,16 @@ FROM nginx:alpine
 
 # Copy the built Angular application to Nginx
 COPY --from=build /app/dist/inv-gen-angular-client/browser /usr/share/nginx/html
+# Copy runtime configuration template
+COPY --from=build /app/public/config.template.json /usr/share/nginx/html/config.template.json
+# Copy the startup script
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+# Make the script executable
+RUN chmod +x /docker-entrypoint.sh
+
+# Run the startup script when the container starts
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Expose port 80
 EXPOSE 80
