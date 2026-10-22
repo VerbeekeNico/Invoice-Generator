@@ -41,6 +41,16 @@ var connectionString =
 builder.Services.AddDbContext<InvoicingDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AngularClient", policy =>
+    {
+        policy.WithOrigins("https://inv-angular-frontend.kindsand-e5fda325.westus2.azurecontainerapps.io")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
