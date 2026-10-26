@@ -1,11 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { WorkItemService } from './workitem.service';
 import { WorkItem } from './workitem.model';
-import { JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-workitem',
-  imports: [JsonPipe],
+  imports: [DatePipe],
   templateUrl: './workitem.html',
   styleUrl: './workitem.css',
 })

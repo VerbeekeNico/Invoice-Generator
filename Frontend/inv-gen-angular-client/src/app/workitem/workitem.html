@@ -1,5 +1,64 @@
-<p>Items: {{ workItems().length }}</p> 
 
-@for (workItem of workItems(); track workItem.id) {
-  <pre>{{ workItem | json }}</pre>
-} 
+<section class="workitems-container">
+  <header class="page-header">
+    <div>
+      <h1>Work Items</h1>
+      <p>Overview of your work items</p>
+    </div>
+
+    <div class="item-count">
+      {{ workItems().length }} items
+    </div>
+  </header>
+
+  @if (workItems().length > 0) {
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (workItem of workItems(); track workItem.id) {
+            <tr>
+              <td>
+                {{ workItem.startTime | date: "dd/MM/yyyy" }}
+              </td>
+              <td>                
+                {{ workItem.startTime | date: 'HH:mm' }}
+              </td>
+              <td>
+                {{ workItem.endTime | date:'HH:mm' }}
+              </td>
+              <td>
+                {{ workItem.location.city }}
+              </td>
+              <td>
+                <span>
+                  {{ workItem.description }}
+                </span>
+              </td>
+              <td>
+                <span>
+                  {{ workItem.note }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <h2>No work items found</h2>
+      <p>There are currently no work items to display.</p>
+    </div>
+  }
+</section>
