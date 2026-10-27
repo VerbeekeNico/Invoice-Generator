@@ -30,16 +30,19 @@ The application is under active development; not every invoicing feature
 or production concern is complete.
 
 Technology stack
+
 Backend
 - C#
 - ASP.NET Core Web API
 - Entity Framework Core
 - Microsoft SQL Server
 - Dependency injection
+  
 Frontend
 - Angular
 - TypeScript
 - HTML and CSS
+  
 Delivery and hosting
 - Docker
 - GitHub Actions
