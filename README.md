@@ -1,4 +1,4 @@
-A personal portfolio project exploring the development and deployment of
+This is a personal portfolio project exploring the development and deployment of
 a full-stack application using ASP.NET Core, C#, Entity
 Framework Core, Angular, Docker, and Azure.
 
