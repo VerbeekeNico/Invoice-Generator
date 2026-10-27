@@ -46,21 +46,6 @@ Delivery and hosting
 - Azure Container Apps
 - Azure-hosted SQL database
 
-Repository structure
-.
-├── Backend/
-│   ├── IncogNicoInvoicing/       # ASP.NET Core API and controllers
-│   ├── Invoicing.Business/       # Application services and mapping
-│   ├── Invoicing.Contract/       # DTOs and application contracts
-│   ├── Invoicing.Domain/         # Domain entities and value objects
-│   ├── Invoicing.Infrastructure/ # EF Core and database access
-│   ├── Dockerfile
-│   └── compose.yaml
-├── Frontend/
-│   └── inv-gen-angular-client/   # Angular application
-└── .github/
-    └── workflows/                # Build and deployment workflows
-
 Current scope and next steps
 This is a portfolio project, not a finished commercial invoicing
 product. Areas for further development include:
