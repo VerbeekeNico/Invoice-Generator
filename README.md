@@ -13,6 +13,7 @@ while demonstrating skills in backend development, API design, frontend
 integration, database access, containerisation, and CI/CD. It is also a
 place to explore technologies beyond my main professional background in
 .NET development.
+
 Current functionality
 - Angular frontend displaying work items in a table.
 - ASP.NET Core Web API with endpoints to create, retrieve, update, and
